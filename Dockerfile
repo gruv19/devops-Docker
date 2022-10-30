@@ -20,8 +20,9 @@ RUN apt-get update \
     php-zip \
     curl \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
-    && mkdir -p /srv/www \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN mkdir -p /srv/www \
     && curl https://wordpress.org/latest.tar.gz | tar zx -C /srv/www
 
 ENTRYPOINT [ "apache2ctl", "-D", "FOREGROUND" ]

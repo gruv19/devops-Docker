@@ -30,7 +30,8 @@ ENTRYPOINT [ "apache2ctl", "-D", "FOREGROUND" ]
 COPY wordpress.conf /etc/apache2/sites-available/
 COPY wp-config.php /srv/www/wordpress/
 
-RUN a2ensite wordpress \
+RUN chown -R www-data: /srv/www \
+    && a2ensite wordpress \
     && a2enmod rewrite \
     && a2dissite 000-default
 

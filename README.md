@@ -17,7 +17,7 @@ systemctl restart mysql
 ```sql
 mysql> CREATE DATABASE wordpress;
 mysql> CREATE USER wordpress@'%' IDENTIFIED BY '<your-password>';
-mysql> GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER ON wordpress.* TO TO wordpress@'%';
+mysql> GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER ON wordpress.* TO wordpress@'%';
 mysql> FLUSH PRIVILEGES;
 mysql> quit
 ```

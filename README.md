@@ -9,7 +9,7 @@
 Найти в нем строку bind-address = 127.0.0.1 и заменить на bind-address = 0.0.0.0
 Перезапустить сервис MySQL
 ```bash
-sudo systemctl restart mysql
+systemctl restart mysql
 ```
 
 Создать БД, пользователя и назначить ему привелегии 
@@ -27,12 +27,12 @@ mysql> quit
 
 ## Сборка образа
 ```bash
-sudo docker build -t <image_name> .
+docker build -t <image_name> .
 ```
 > Вместо <image_name> ввести свое имя образа
 
 ## Запуск контейнера
 ```bash
-sudo docker run --name <container_name> -td -p 80:80 <image_name>
+docker run --name <container_name> -td -p 80:80 <image_name>
 ```
 > Вместо <container_name> ввести свое имя контейнера, а вместо <image_name> - имя образа, созданного на предыдущем шаге

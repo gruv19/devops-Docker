@@ -43,9 +43,11 @@ newgrp docker
 docker build -t <image_name> .
 ```
 > Вместо <image_name> ввести свое имя образа
+> Для сборки образа на основе Alpine использовать Dockerfile_alpine
 
 ## 4. Запуск контейнера
 ```bash
 docker run --name <container_name> -td -p 80:80 <image_name>
 ```
 > Вместо <container_name> ввести свое имя контейнера, а вместо <image_name> - имя образа, созданного на предыдущем шаге
+> Если образ собран с помощью Dockerfile_alpine, вместо -p 80:80 использовать -p 90:90

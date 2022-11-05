@@ -12,3 +12,10 @@ RUN apk update \
     php-mbstring \
     php-xml \
     php-zip
+
+RUN mkdir -p /srv/www \
+    && wget -O /srv/www/latest.tar.gz https://wordpress.org/latest.tar.gz \
+    && tar -xzvf /srv/www/latest.tar.gz -C /srv/www/ \
+    && rm /srv/www/latest.tar.gz
+
+COPY wp-config.php /srv/www/wordpress/

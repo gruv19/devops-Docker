@@ -22,3 +22,5 @@ RUN mkdir -p /srv/www \
     && chown -R root:root /srv/www/
 
 COPY wp-config.php /srv/www/wordpress/
+COPY wordpress_alpine.conf /etc/apache2/conf.d/wordpress.conf
+

@@ -24,3 +24,4 @@ RUN mkdir -p /srv/www \
 COPY wp-config.php /srv/www/wordpress/
 COPY wordpress_alpine.conf /etc/apache2/conf.d/wordpress.conf
 
+ENTRYPOINT [ "/usr/sbin/httpd", "-D", "FOREGROUND" ]

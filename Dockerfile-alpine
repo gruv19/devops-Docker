@@ -1,0 +1,27 @@
+FROM ubuntu:22.04
+
+RUN apk update \
+    && apk add --no-cache \
+    apache2 \
+    php-apache2 \
+    php \
+    php-bcmath \
+    php-curl \
+    php-intl \
+    php-json \
+    php-mbstring \
+    php-xml \
+    php-zip \
+    php-mysqli \
+    && rm /var/cache/apk/*
+
+RUN mkdir -p /srv/www \
+    && wget -O /srv/www/latest.tar.gz https://wordpress.org/latest.tar.gz \
+    && tar -xzvf /srv/www/latest.tar.gz -C /srv/www/ \
+    && rm /srv/www/latest.tar.gz \
+    && chown -R root:root /srv/www/
+
+COPY wp-config.php /srv/www/wordpress/
+COPY wordpress_alpine.conf /etc/apache2/conf.d/wordpress.conf
+
+ENTRYPOINT [ "/usr/sbin/httpd", "-D", "FOREGROUND" ]
